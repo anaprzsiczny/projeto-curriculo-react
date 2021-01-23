@@ -227,11 +227,11 @@ h3::after {
 
 .titulo::before {
   content: "";
-  padding: 8px 20px;
+  padding: 9px 44px;
   position: absolute;
   background: #fff;
   bottom: 53.5%;
-  left: 35%;
+  left: 27%;
 }
 
 .perfil-profissional {

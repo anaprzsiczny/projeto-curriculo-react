@@ -1,70 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css"
-
+import Header from './components/header/header'
+import Sidebar from './components/sidebar/sidebar'
+import Experiencia from './components/experiencia/experiencia'
 
 function App() {
 
   const fakeAPI =  
     {
-      nome: 'Lisa Simpson',
-      ocupacao: 'Developer',
-      resumo: '8 anos e já sei React',
-      perfilProfissional: 'Faço miojo bom',
+      nome: 'Ana Júlia G. Przsiczny',
+      ocupacao: 'Estudante',
+      resumo: 'Estou aprendendo tudo que posso, sonhando com código e, quando acordo, escrevendo código, como esse que você está lendo agora ;)',
+      perfilProfissional: 'Conheci a área de tecnologia há muito tempo, durante o ensino médio, quando decidi fazer um curso técnico de Informática. Achei tudo muito legal, e decidi fazer faculdade nessa área. Fiz o curso de Análise e Desenvolvimento de Sistemas, mas parei depois de um ano para ir atrás de uma outra paixão, o Jornalismo. Me formei em 2019, e então decidi que era hora de tentar de novo. E aqui estou, estudando, reaprendendo o que já sabia, aprendendo muitas coisas novas e procurando experiências diversas.',
       contatos: [
         {
           id: 1,
-          tipo: 'telefone',
-          contato: '19 0000-0000'
+          tipo: 'Telefone',
+          contato: '19 91234-5678'
         },
         {
           id: 2,
-          tipo: 'email',
-          contato: 'nome@dev.com'
+          tipo: 'E-mail',
+          contato: 'ana.przsiczny@gmail.com'
+        },
+        {
+          id: 3,
+          tipo: 'Github',
+          contato: 'https://github.com/anaprzsiczny'
         }
       ],
       educacao: [
         {
           id: 1,
-          instituicao: 'EMEF',
-          curso: 'Ensino basico'
+          instituicao: 'CEUNSP - Salto',
+          curso: 'Comunicação Social - Jornalismo'
         },
         {
           id: 2,
-          instituicao: 'ETEC',
-          curso: 'Como ser dev'
+          instituicao: 'Campinas Tech Talents',
+          curso: 'Imersão em React'
+        },
+        {
+          id: 3,
+          instituicao: 'Digital House',
+          curso: 'Introdução à Programação'
         }
       ],
       experiencia: [
         {
           id: 1,
           cargo: 'Front',
-          periodo: 'Agosto 2019 - Atualmente',
-          empresa: 'NASA',
-          local: 'Nova York',
-          conteudo: 'Fazia nada e ganhava bem'
+          periodo: 'Janeiro 2020',
+          empresa: 'Twitter',
+          local: 'Campinas',
+          conteudo: 'Fiz o clone do perfil de um usuário'
         },
         {
           id: 2,
-          cargo: 'Back',
-          periodo: 'Agosto 2018 - Agosto 2019',
-          empresa: 'CIA',
-          local: 'Boston',
-          conteudo: 'Fazia nada e ganhava mal'
+          cargo: 'Front',
+          periodo: 'Janeiro 2020',
+          empresa: 'Minha Empresa',
+          local: 'Campinas',
+          conteudo: 'Fiz o currículo que você está vendo agora (bonito, né?)'
         }
       ]
   }
+
+  const [resposta] = useState(fakeAPI)
+  console.log(resposta)
+
   return (
     <main>
-      <div className="perfil">
-        <img src="https://i.pravatar.cc/400" alt="Perfil" />
-      </div>
-      <div className="biografia">
-        <h1>
-          Nome Sobrenome
-        </h1>
-        <div className="ocupacao">Developer</div>
-        <p>109 anos e pronta pra ser dev</p>
-      </div>
+      <Header respostaHeader={resposta} />
 
       <div className="titulo">
         Perfil <br /> Profissional
@@ -72,74 +79,11 @@ function App() {
 
       <div className="perfil-profissional">
         <p>
-          Faço nada da vida
+          {resposta.perfilProfissional}
         </p>
       </div>
-      <aside>
-        <div className="sidebar">
-          <h3>Contatos</h3>
-
-          <button>Mostrar Contatos</button>
-
-          <div className="lista-de-contatos">
-            <li>
-              <div className="item-contato">
-                <h4>TELEFONE</h4>
-                <p>(19) 0000-0000</p>
-              </div>
-            </li>
-            <li>
-              <div className="item-contato">
-                <h4>TELEFONE</h4>
-                <p>(19) 0000-0000</p>
-              </div>
-            </li>
-          </div>
-        </div>
-
-        <div className="sidebar">
-          <h3>Educação</h3>
-          <div className="lista-de-formacao">
-            <li>
-              <h4>Faculdade da vida</h4>
-              <p>Uniesquina 2019 - 2022</p>
-            </li>
-            <li>
-              <h4>EMEF</h4>
-              <p>Qualquer lugar 2010 - 2013</p>
-            </li>
-          </div>
-        </div>
-      </aside>
-      <div className="experience">
-        <h2>Experiência Profissional</h2>
-
-        <div className="experience-item">
-          <div>
-            <h4>Developer</h4>
-            <span>Novembro 2019 - Atualmente</span>
-
-            <strong>Empresa da hora</strong>
-            <span>Campinas - São Paulo</span>
-          </div>
-          <p>
-            Fazia nada
-        </p>
-        </div>
-        <div className="experience-item">
-
-          <div>
-            <h4>Developer</h4>
-            <span>Agosto 2019 - Novembro 2019</span>
-
-            <strong>Empresa estranha</strong>
-            <span>Sumaré - São Paulo</span>
-          </div>
-          <p>
-            Fazia menos
-        </p>
-        </div>
-      </div>
+      <Sidebar respostaSidebar={resposta} />
+      <Experiencia respostaExperiencia={resposta} />
     </main>
   );
 }
